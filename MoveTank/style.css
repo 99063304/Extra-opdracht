@@ -2,9 +2,42 @@
 	margin: 0;
 	padding: 0;
 }
+body{
+	border: solid red 1px;
+	background-color: red;
+  position: relative;
+
+}
+#demo{
+	margin: auto;
+	background-color: white;
+	position: relative;
+	height: 800px;
+	width: 800px;
+	border: solid 1px blue;
+	/* padding-right: 50px;
+	padding-bottom: 50px; */
+}
 
 #image {
 	height: 80px;
 	width: 80px;
 	background: url('tank.png') 80px 0px;
+	position: absolute;
+	left: 400px;
+	top: 400px;
+	/* right: 500px;
+	bottom: 500px; */
+	z-index: 1;
+}
+#bullet{
+	background: url('tank.png') 330px 170px;
+	height: 80px;
+	width: 80px;
+	position: absolute;
+	left: 400px;
+	top: 400px;
+	/* right: 500px; */
+	/* transition: ease;
+	transition-duration: 1s; */
 }
