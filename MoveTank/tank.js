@@ -10,7 +10,8 @@ var innerIndex = [1];
 var marginCounter = 0;
 var marginPosition = [400, 400, 400, 400]
 var index = 0;
-  // position()
+var waarde= false;
+// position()
 var direction = ['left']
 var width1 = body1.style.width;
 console.log(width1);
@@ -23,12 +24,9 @@ function checkKey(e) {
     bullet.style.background = "url('tank.png') 330px 170px)"
     bullet.style.transition = 'ease';
     bullet.style.transitionDuration = '1s';
-    // Style();
-    // styles();
+    waarde=false;
+    reload();
     border();
-    // \;
-    // console.log(marginPosition[0]);
-    // console.log(marginPosition[1]);
     console.log("spacebar");
   } else if (e.keyCode == '38') { // up arrow
     image.style.transform = "rotate(0deg)";
@@ -72,79 +70,79 @@ function checkKey(e) {
   }
 }
 
-// function Style() {
-//   bullet.style.left = image.style.left;
-//   bullet.style.top = image.style.top;
-//   marginPosition[2] = marginPosition[0]
-//   marginPosition[3] = marginPosition[1];
-// }
+function Style() {
+  bullet.style.left = image.style.left;
+  bullet.style.top = image.style.top;
+  // marginPosition[2] = marginPosition[0]
+  // marginPosition[3] = marginPosition[1];
+}
+var answer = marginPosition[index];
 
-// function styles(position) {
-//   // if (index == position) {
-//   index = 2;
-//   // }
-//   // if (position == 'rotate(0deg)') {
-//   bullet.style.top = marginPosition[index] + 'px';
-//   marginPosition[index] -= 50;
-//   // } else if (position == 'rotate(90deg)') {
-//   marginPosition[index] += 50;
-//   bullet.style.top = marginPosition[index] + 'px';
-//   index++
-//   marginPosition[index] += 50;
-//   bullet.style.left = marginPosition[index] + 'px';
-//   // } else if (position == 'rotate(180deg)') {
-//
-//   // } else {
-//   marginPosition[index] -= 50;
-//   bullet.style.left = marginPosition[index] + 'px';
-//   // }
-//   index = 0;
-// }
+function styles(position) {
+  if (answer >= 0) {
+    position = true;
+  }
+  if (answer <= 750) {
+    position = true;
+  }
+  if (answer >= 0) {
+    position = true;
+  }
+  if (answer <= 750) {
+    position = true;
+  }
+  if (position == true) {
+
+  }
+}
+
 
 function styles2(position) {
-  // if (index == position) {
-    index = 2;
+  index = 2;
   if (position == 'rotate(0deg)') {
     marginPosition[2] -= 50;
     bullet.style.top = marginPosition[2] + 'px';
+    position = marginPosition[index]
 
-  }
-  else if (position == 'rotate(180deg)') {
+  } else if (position == 'rotate(180deg)') {
     marginPosition[2] += 50;
     bullet.style.top = marginPosition[2] + 'px';
+    position = marginPosition[index]
   }
-   else if (position == 'rotate(90deg)') {
-   marginPosition[3] += 50;
-   bullet.style.left = marginPosition[3] + 'px';
- }
-  else if (position == 'rotate(270deg)'){
+  index++
+  if (position == 'rotate(90deg)') {
+    marginPosition[3] += 50;
+    bullet.style.left = marginPosition[3] + 'px';
+    position = marginPosition[index]
+  } else if (position == 'rotate(270deg)') {
     marginPosition[3] -= 50;
     bullet.style.left = marginPosition[3] + 'px';
+    position = marginPosition[index]
   }
-
-
   index = 0;
 }
-
+console.log(styles2());
 console.log(image.style.left);
 
 function left() {
   if (marginPosition[1] <= 0) {
     marginPosition[1] = 740;
     image.style.left = marginPosition[1] + 'px'
+    // waarde = true
   } else if (marginPosition[1] >= 750) {
     marginPosition[1] = 5;
     image.style.left = marginPosition[1] + 'px'
+    // waarde = true;
   }
   if (marginPosition[0] <= 0) {
     marginPosition[0] = 740;
-    image.style.left = marginPosition[1] + 'px'
-   }
-   else if (marginPosition[0]>=750) {
+    image.style.left = marginPosition[1] + 'px';
+    // waarde = true;
+  } else if (marginPosition[0] >= 750) {
     marginPosition[0] = 25;
     image.style.top = marginPosition[0] + 'px'
+    // waarde = true;
   }
-
 }
 
 function position() {
@@ -152,23 +150,28 @@ function position() {
   marginPosition[1] = image.style.top;
 
 }
-// var myvar = setInterval(border,1)
-function border() {
-  if (marginPosition[1] != 0 || marginPosition[1] != 750 || marginPosition[0] != 0 || marginPosition[0] != 750) {
-    styles2(bullet.style.transform);
-    if (marginPosition[0] <= 0) {
-      setTimeout(function() {
-        bullet.style.transition = 'none';
-        bullet.style.transitionDuration = 'none';
-        // var time = setInterval(function() {
-        bullet.style.background = "url('Explode.gif')";
-      }, 500);
-      setTimeout(clearInterval(time), 500)
 
-    }
-    // }
-  }
-  if (marginPosition[2] <= '0' || marginPosition[2] >= '750' || marginPosition[3] <= '0' || marginPosition[3] >= '750') {
+function border() {
+  if (marginPosition[2] >= 0 && marginPosition[2] <= 750 && marginPosition[3] >= 0 && marginPosition[3] <= 750) {
+    styles2(image.style.transform);
+  } else {
+    setTimeout(function() {
+      bullet.style.transition = 'none';
+      bullet.style.transitionDuration = 'none';
+      bullet.style.background = "url('Explode.gif')";
+      waarde=true;
+      console.log(waarde);
+    }, 500);
 
   }
 }
+function reload() {
+if (waarde == true) {
+  bullet.style.background = "url('tank.png') 330px 170px";
+  Style()
+}
+}
+
+
+
+// }
