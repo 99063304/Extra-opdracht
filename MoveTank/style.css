@@ -9,6 +9,12 @@ body{
 
 }
 #demo{
+	grid-template-columns: 50px 50px 50px 50px 50px 50px 50px 50px 50px 50px 50px 50px 50px 50px 50px 50px;
+	grid-template-rows: 50px 50px 50px 50px 50px 50px 50px 50px 50px 50px 50px 50px 50px 50px 50px 50px;
+	display: grid;
+	/* grid-gap: 8px; */
+	/* padd-left: 3px; */
+	/* border: solid red 5px; */
 	margin: auto;
 	background-color: white;
 	position: relative;
@@ -31,7 +37,7 @@ body{
 	z-index: 1;
 }
 #bullet{
-	background: url('tank.png') 330px 170px;
+	/* background: url('tank.png') 330px 170px; */
 	height: 80px;
 	width: 80px;
 	position: absolute;
@@ -40,4 +46,7 @@ body{
 	/* right: 500px; */
 	/* transition: ease;
 	transition-duration: 1s; */
+}
+{
+
 }
